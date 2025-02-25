@@ -30,13 +30,13 @@
         }).addTo(map);
 
         // Load and add GPX track
-        var gpx = 'gpx_trail.gpx';  // Replace with your GPX file path or URL
+        var gpx = 'https://raw.githubusercontent.com/bandeliukas/trail_gpx_leaflet/refs/heads/main/gpx_trail.gpx';  // Replace with your GPX file path or URL
         new L.GPX(gpx, {
             async: true,
             marker_options: {
-                startIconUrl: 'https://example.com/start.png',  // Custom start icon if needed
-                endIconUrl: 'https://example.com/end.png',      // Custom end icon if needed
-                shadowUrl: 'https://example.com/marker-shadow.png' // Custom shadow if needed
+                startIconUrl: 'https://raw.githubusercontent.com/Leaflet/Leaflet.markercluster/master/dist/images/marker-icon-2x.png',
+                endIconUrl: 'https://raw.githubusercontent.com/Leaflet/Leaflet.markercluster/master/dist/images/marker-icon-2x.png',
+                shadowUrl: 'https://raw.githubusercontent.com/Leaflet/Leaflet.markercluster/master/dist/images/marker-shadow.png'
             }
         }).on('loaded', function(e) {
             map.fitBounds(e.target.getBounds());  // Automatically zoom to fit GPX track
