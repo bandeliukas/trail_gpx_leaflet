@@ -6,7 +6,7 @@
     <title>Interactive Map with GPX</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-    <script src="https://unpkg.com/leaflet-gpx/dist/leaflet-gpx.min.js"></script>
+    <script src="https://unpkg.com/leaflet-gpx@1.3.0/dist/leaflet-gpx.min.js"></script>
     <style>
         #map {
             height: 80vh;
@@ -26,8 +26,8 @@
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> contributors'
         }).addTo(map);
 
-        // Reference to the GPX file in your GitHub repo
-        var gpxUrl = "https://raw.githubusercontent.com/bandeliukas/trail_gpx_leaflet/refs/heads/main/gpx_trail.gpx";
+        // URL to the GPX file on GitHub (Ensure it's the raw URL)
+        var gpxUrl = "https://raw.githubusercontent.com/bandeliukas/trail_gpx_leaflet/main/gpx_trail.gpx";
 
         // Add GPX track to the map
         var gpxLayer = new L.GPX(gpxUrl, {
@@ -37,6 +37,8 @@
                 endIconUrl: 'https://raw.githubusercontent.com/Leaflet/Leaflet.markercluster/master/dist/images/marker-icon-2x.png',
                 shadowUrl: 'https://raw.githubusercontent.com/Leaflet/Leaflet.markercluster/master/dist/images/marker-shadow.png'
             }
+        }).on('loaded', function(e) {
+            map.fitBounds(e.target.getBounds()); // Fit the map bounds to the GPX track
         }).addTo(map);
     </script>
 </body>
