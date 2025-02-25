@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Interactive Map with GPX</title>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-gpx/1.4.0/gpx.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-gpx/2.1.2/gpx.min.js" defer></script>
     <style>
         #map {
-            height: 80vh;
+            height: 100%;
             width: 100%;
         }
     </style>
@@ -32,11 +32,7 @@
         // Add GPX track to the map
         var gpxLayer = new L.GPX(gpxUrl, {
             async: true,
-            marker_options: {
-                startIconUrl: 'https://raw.githubusercontent.com/Leaflet/Leaflet.markercluster/master/dist/images/marker-icon-2x.png',
-                endIconUrl: 'https://raw.githubusercontent.com/Leaflet/Leaflet.markercluster/master/dist/images/marker-icon-2x.png',
-                shadowUrl: 'https://raw.githubusercontent.com/Leaflet/Leaflet.markercluster/master/dist/images/marker-shadow.png'
-            }
+            polyline_options: { color: 'yellow' }
         }).on('loaded', function(e) {
             // map.fitBounds(e.target.getBounds()); // Fit the map bounds to the GPX track
         }).addTo(map);
